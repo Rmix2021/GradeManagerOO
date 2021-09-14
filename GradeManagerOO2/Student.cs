@@ -12,6 +12,8 @@ namespace Grade_Manager_OO
         public double average { get; set; }
         public bool completionStatus { get; set; }
 
+        
+
         public Student(string studentName, double studentAverage, bool studentCompletionStatus)
         {
             this.name = studentName;
@@ -26,7 +28,15 @@ namespace Grade_Manager_OO
 
         public static void AssignNewAssignment()
         {
-            Console.WriteLine("Assign new Assignment.");
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the assignment in which yo would like to add."));
+            Console.SetCursorPosition(21, 9);
+            string assignmentName = Console.ReadLine();
+
+        }
+
+        public static void ShowAssignments()
+        {
+            Console.WriteLine("Show assignments");
         }
 
         public static void ShowStudentBestGrade()
