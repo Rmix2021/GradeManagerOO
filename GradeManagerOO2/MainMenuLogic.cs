@@ -8,6 +8,7 @@ namespace Grade_Manager_OO
 {
     class MainMenuLogic
     {
+       
         public static void ShowClassRooms()
         {
             Console.WriteLine("Show classrooms");
@@ -15,9 +16,10 @@ namespace Grade_Manager_OO
 
         public static void AddClassRoom()
         {
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the class room in which yo would like to add."));
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the classroom in which you would like to add."));
             Console.SetCursorPosition(21, 9);
-            string classroomName = Console.ReadLine();
+            string classRoomName = Console.ReadLine();
+            
         }
 
         public static void RemoveClassRoom()

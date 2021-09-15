@@ -8,7 +8,9 @@ namespace Grade_Manager_OO
 {
     class ClassRoom
     {
-        public string name { get; set; }
+        public string name { get; set; } = "Default class room";
+
+        public Dictionary<string, ClassRoom> _classRooms = new Dictionary<string, ClassRoom>();
 
         public ClassRoom(string classRoomName)
         {
@@ -25,6 +27,7 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the Student in which you would like to add."));
             Console.SetCursorPosition(21, 9);
             string studentName = Console.ReadLine();
+
         }
 
         public static void RemoveStudent()

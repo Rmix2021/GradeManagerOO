@@ -6,19 +6,30 @@ using System.Threading.Tasks;
 
 namespace Grade_Manager_OO
 {
-    class Assignment
+    public class Assignment
     {
-        public string name { get; set; }
-        public int grade { get; set; }
+        public string Name { get; }
 
-        public bool status { get; set; }
-
-        public Assignment(string assignmentName, int assignmentGrade, bool assignmentStatus)
+        private int _grade = 0;
+        public int Grade 
         {
-            this.name = assignmentName;
-            this.grade = assignmentGrade;
-            this.status = assignmentStatus;
-
+            get
+            {
+                return _grade;
+            } 
+            set 
+            {
+                Grade = value;
+                if (Grade >= 0)
+                {
+                    CompletionStatus = true;
+                }
+            } 
         }
+        public bool CompletionStatus { get; private set; } = false;                
+        public Assignment(string assignmentName)
+        {
+            this.Name = assignmentName;
+        }       
     }
 }

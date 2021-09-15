@@ -8,15 +8,15 @@ namespace Grade_Manager_OO
 {
     public class Student
     {
-        public string name { get; set; }
-        public double average { get; set; }
-        public bool completionStatus { get; set; }
+        public string studentName { get; set; } = "Not defined";
+        public double average { get; set; } = 0.0;
+        public bool completionStatus { get; set; } = false;
 
         
 
-        public Student(string studentName, double studentAverage, bool studentCompletionStatus)
+        public Student(string StudentName, double studentAverage, bool studentCompletionStatus)
         {
-            this.name = studentName;
+            this.studentName = StudentName;
             this.average = studentAverage;
             this.completionStatus = studentCompletionStatus;
         }
@@ -31,6 +31,9 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the assignment in which yo would like to add."));
             Console.SetCursorPosition(21, 9);
             string assignmentName = Console.ReadLine();
+            
+            
+
 
         }
 
@@ -47,6 +50,7 @@ namespace Grade_Manager_OO
         public static void ShowStudentWorstGrade()
         {
             Console.WriteLine("Show worst grade");
+
         }
 
     }

@@ -10,7 +10,7 @@ namespace Grade_Manager_OO
 {
     public class MainMenu
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Menu();
 
