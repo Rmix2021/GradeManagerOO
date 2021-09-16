@@ -17,6 +17,16 @@ namespace Grade_Manager_OO
             this.name = classRoomName;
         }
 
+        void WriteLineStudentDictionary()
+        {
+            foreach (KeyValuePair<string, Student> kvp in this.studentDictionary)
+            {
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Student Name: {kvp.Value.StudentName}                                          "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Average: {kvp.Value.Average}                                          "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Completion Status: {kvp.Value.AllAssignmentsCompleteTrueOrFalse} +  /n"));
+            }
+        }
+
         public void ClassRoomDetailsMenu()
         {
             Console.Clear();
@@ -33,7 +43,7 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit this menu.                     "));
             Console.SetCursorPosition(21, 12);
 
-            string classRoomChoice = Console.ReadLine();
+            string classRoomChoice = Console.ReadLine().ToUpper();
 
             switch (classRoomChoice)
             {
@@ -56,7 +66,7 @@ namespace Grade_Manager_OO
                     }
 
                 case "4":
-                    //Student[StudentName].EditStudentDetailsMenu();
+                    StudentDetailsMenu();
                     {
                         break;
                     }
@@ -93,24 +103,39 @@ namespace Grade_Manager_OO
 
             void ShowStudents()
             {
-                Console.WriteLine("Students");
+                Console.Clear();
+                WriteLineStudentDictionary();
+                Console.ReadLine().ToUpper(); 
+                ClassRoomDetailsMenu();
             }
 
             void AddStudent()
             {
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the Student in which you would like to add."));
                 Console.SetCursorPosition(21, 9);
-                string studentName = Console.ReadLine();
+                string studentName = Console.ReadLine().ToUpper();
                 studentDictionary.Add(studentName, new Student(studentName));
+                ClassRoomDetailsMenu();
+            }
 
-
+            void StudentDetailsMenu()
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like edit"));
+                WriteLineStudentDictionary();
+                string studentChoice = Console.ReadLine().ToUpper();
+                studentDictionary[studentChoice].EditStudentDetailsMenu();
             }
 
             void RemoveStudent()
             {
-                Console.WriteLine(" Remove Student");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like to remove."));
+                Console.SetCursorPosition(21, 9);
+                string studentName = Console.ReadLine().ToUpper();
+                studentDictionary.Remove(studentName);
+                ClassRoomDetailsMenu();
             }           
-
+            
             void ShowClassAverage()
             {
                 Console.WriteLine("Show average");

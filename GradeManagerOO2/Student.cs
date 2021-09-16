@@ -53,7 +53,7 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit this menu.                     "));
             Console.SetCursorPosition(21, 10);
 
-            string StudentDetailsChoice = Console.ReadLine();
+            string StudentDetailsChoice = Console.ReadLine().ToUpper();
             switch (StudentDetailsChoice)
             {
                 case "1":
@@ -114,7 +114,7 @@ namespace Grade_Manager_OO
             Console.WriteLine(this.StudentName);
             Console.WriteLine(this.Average);
             Console.WriteLine(this.AllAssignmentsCompleteTrueOrFalse);
-            Console.ReadLine();
+            Console.ReadLine().ToUpper();
 
             EditStudentDetailsMenu();
 
@@ -127,7 +127,7 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the assignment in which you would like to add."));
             Console.SetCursorPosition(21, 9);
 
-            string assignmentName = Console.ReadLine();
+            string assignmentName = Console.ReadLine().ToUpper();
             assignmentsDictionary.Add(assignmentName, new Assignment(assignmentName));
             
             EditStudentDetailsMenu();
@@ -138,7 +138,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             WriteLineAssignmentDictionary();
-            Console.ReadLine();
+            Console.ReadLine().ToUpper();
 
             EditStudentDetailsMenu();
         }
@@ -148,7 +148,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", HighestGrade));
-            Console.ReadLine();
+            Console.ReadLine().ToUpper();
             EditStudentDetailsMenu();
         }
 
@@ -157,7 +157,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", LowestGrade));
-            Console.ReadLine();
+            Console.ReadLine().ToUpper();
             EditStudentDetailsMenu();
         }
 
@@ -166,7 +166,7 @@ namespace Grade_Manager_OO
             Console.Clear();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Assignment name in which you would like Grade"));
             WriteLineAssignmentDictionary();
-            string assignmentChoice = Console.ReadLine();
+            string assignmentChoice = Console.ReadLine().ToUpper();
 
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter this assignments Grade from 0.0 - 100"));
             double assignmentCurrentGrade = Convert.ToDouble(Console.ReadLine());
