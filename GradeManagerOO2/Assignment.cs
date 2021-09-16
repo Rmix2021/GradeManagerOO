@@ -10,8 +10,9 @@ namespace Grade_Manager_OO
     {
         public string Name { get; }
 
-        private int _grade = 0;
-        public int Grade 
+        private double _grade = 0;
+        public bool CompletionStatus { get; private set; } = false;                
+        public double Grade 
         {
             get
             {
@@ -26,10 +27,11 @@ namespace Grade_Manager_OO
                 }
             } 
         }
-        public bool CompletionStatus { get; private set; } = false;                
         public Assignment(string assignmentName)
         {
             this.Name = assignmentName;
-        }       
+        }
+
+       
     }
 }

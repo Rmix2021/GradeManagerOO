@@ -15,7 +15,7 @@ namespace Grade_Manager_OO
             Menu();
         }
 
-        public Dictionary<string, ClassRoom> ClassRooms = new Dictionary<string, ClassRoom>();
+        public Dictionary<string, ClassRoom> classRoomsDictionary = new Dictionary<string, ClassRoom>();
         public static void Menu()
         {
             Console.Clear();
@@ -77,6 +77,8 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the classroom in which you would like to add."));
             Console.SetCursorPosition(21, 9);
             string classRoomName = Console.ReadLine();
+            //classRoomsDictionary.Add(classRoomName, new ClassRoom(classRoomName));
+
 
         }
 
