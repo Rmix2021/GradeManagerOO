@@ -15,7 +15,7 @@ namespace Grade_Manager_OO
             Menu();
         }
 
-        public Dictionary<string, ClassRoom> classRoomsDictionary = new Dictionary<string, ClassRoom>();
+        public static Dictionary<string, ClassRoom> classRoomsDictionary = new Dictionary<string, ClassRoom>();
         public static void Menu()
         {
             Console.Clear();
@@ -53,7 +53,7 @@ namespace Grade_Manager_OO
                     }
 
                 case "4":
-                    //ClassRoom.ClassRoomDetailsMenu();
+                   ClassRoomDetailsMenu();
                     {
                         break;
                     }
@@ -65,42 +65,66 @@ namespace Grade_Manager_OO
                         break;
                     }
             }
-        }
 
-        static void ShowClassRooms()
-        {
-            Console.WriteLine("Show classrooms");
-        }
-
-        static void AddClassRoom()
-        {
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the classroom in which you would like to add."));
-            Console.SetCursorPosition(21, 9);
-            string classRoomName = Console.ReadLine().ToUpper();
-            //classRoomsDictionary.Add(classRoomName, new ClassRoom(classRoomName));
-
-
-        }
-
-        static void RemoveClassRoom()
-        {
-            Console.WriteLine("Remove Classroom");
-        }
-
-        static void Exit()
-        {
-            Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Exit? Press 9 again"));
-            Console.SetCursorPosition(20, 20);
-            int answer = Convert.ToInt32(Console.ReadLine());
-            if (answer != 9)
+            static void WriteLineClassRoomDictionary()
             {
+                foreach (KeyValuePair<string, ClassRoom> kvp in classRoomsDictionary)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Classroom Name: {kvp.Value.name}                                          "));
+             
+                }
+            }
+
+            static void ShowClassRooms()
+            {
+                Console.Clear();
+                WriteLineClassRoomDictionary();
+                Console.ReadLine();
                 Menu();
             }
-            Environment.Exit(9);
+
+            static void AddClassRoom()
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the classroom in which you would like to add."));
+                Console.SetCursorPosition(21, 9);
+                string classRoomName = Console.ReadLine().ToUpper();
+                classRoomsDictionary.Add(classRoomName, new ClassRoom(classRoomName));
+                Menu();
+
+
+            }
+
+            static void ClassRoomDetailsMenu()
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like edit"));
+                WriteLineClassRoomDictionary();
+                string classroomChoice = Console.ReadLine().ToUpper();
+                classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+            }
+
+            static void RemoveClassRoom()
+            {
+                Console.WriteLine("Remove Classroom");
+            }
+
+            static void Exit()
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Exit? Press 9 again"));
+                Console.SetCursorPosition(20, 20);
+                int answer = Convert.ToInt32(Console.ReadLine());
+                if (answer != 9)
+                {
+                    Menu();
+                }
+                Environment.Exit(9);
+            }
         }
+
     }
 }
         
-    
+
 

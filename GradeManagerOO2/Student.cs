@@ -139,7 +139,6 @@ namespace Grade_Manager_OO
             Console.Clear();
             WriteLineAssignmentDictionary();
             Console.ReadLine().ToUpper();
-
             EditStudentDetailsMenu();
         }
 
