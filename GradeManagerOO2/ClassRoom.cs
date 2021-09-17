@@ -12,6 +12,8 @@ namespace Grade_Manager_OO
 
         public Dictionary<string, Student> studentDictionary = new Dictionary<string, Student>();
 
+        public List<double> classGradesListToAverageOut = new List<double>();
+
         public ClassRoom(string classRoomName)
         {
             this.name = classRoomName.ToUpper();
@@ -142,28 +144,47 @@ namespace Grade_Manager_OO
             
             void ShowClassAverage()
             {
-                Console.WriteLine("Show average");
+                Console.Clear();
+                combineGradesList();
+                classGradesListToAverageOut.Average();
+                Console.ReadLine();
+                ClassRoomDetailsMenu();
             }
 
             void ShowTopStudent()
             {
-                Console.WriteLine("Show top student");
+                Console.Clear();
+                Console.ReadLine();
+                ClassRoomDetailsMenu();
             }
 
             void ShowBottomStudent()
             {
-                Console.WriteLine("Show bottom student");
+                Console.Clear();
+                Console.ReadLine();
+                ClassRoomDetailsMenu();
             }
 
             void Compare2Student()
             {
-                Console.WriteLine("Compare 2 Students");
+                Console.Clear();
+                Console.ReadLine();
+                ClassRoomDetailsMenu();
             }
 
             void ExitThisMenu()
             {
                 Console.Clear();
                 MainMenu.Menu();
+            }
+
+            void combineGradesList()
+            {
+            foreach (KeyValuePair<string, Student> kvp in this.studentDictionary)
+                {
+                    classGradesListToAverageOut.AddRange(kvp.Value.gradesListToAverageOut);
+                }
+
             }
 
         }

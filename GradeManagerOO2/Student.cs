@@ -27,7 +27,7 @@ namespace Grade_Manager_OO
             this.Average = 0;
         }
 
-        private static List<double> gradesListToAverageOut = new List<double>();
+        public List<double> gradesListToAverageOut = new List<double>();
 
         void WriteLineAssignmentDictionary()
         {
@@ -163,16 +163,6 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Assignment name in which you would like Grade"));
             WriteLineAssignmentDictionary();
             string assignmentChoice = Console.ReadLine().ToUpper();
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                EditStudentDetailsMenu();
-            }
-
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter this assignments Grade from 0.0 - 100"));
             double assignmentCurrentGrade = Convert.ToDouble(Console.ReadLine());
             assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
@@ -186,7 +176,7 @@ namespace Grade_Manager_OO
             else if(assignmentCurrentGrade < LowestGrade)
             {
                 this.LowestGrade = assignmentCurrentGrade;
-                gradesListToAverageOut.Add(assignmentCurrentGrade);
+                gradesListToAverageOut.Add(assignmentCurrentGrade);                
                 this.Average = gradesListToAverageOut.Average();
 
             }
