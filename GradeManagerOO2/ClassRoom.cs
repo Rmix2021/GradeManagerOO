@@ -14,13 +14,14 @@ namespace Grade_Manager_OO
 
         public ClassRoom(string classRoomName)
         {
-            this.name = classRoomName;
+            this.name = classRoomName.ToUpper();
         }
 
         void WriteLineStudentDictionary()
         {
             foreach (KeyValuePair<string, Student> kvp in this.studentDictionary)
             {
+                Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Student Name: {kvp.Value.StudentName}                                          "));
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Average: {kvp.Value.Average}                                          "));
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Completion Status: {kvp.Value.AllAssignmentsCompleteTrueOrFalse} +  /n"));
@@ -111,10 +112,12 @@ namespace Grade_Manager_OO
 
             void AddStudent()
             {
+                Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the Student in which you would like to add."));
                 Console.SetCursorPosition(21, 9);
                 string studentName = Console.ReadLine().ToUpper();
                 studentDictionary.Add(studentName, new Student(studentName));
+                Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
 
@@ -129,6 +132,7 @@ namespace Grade_Manager_OO
 
             void RemoveStudent()
             {
+                Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like to remove."));
                 Console.SetCursorPosition(21, 9);
                 string studentName = Console.ReadLine().ToUpper();

@@ -53,7 +53,7 @@ namespace Grade_Manager_OO
                     }
 
                 case "4":
-                   ClassRoomDetailsMenu();
+                   ClassRoomDetailsSubMenu();
                     {
                         break;
                     }
@@ -95,10 +95,10 @@ namespace Grade_Manager_OO
 
             }
 
-            static void ClassRoomDetailsMenu()
+            static void ClassRoomDetailsSubMenu()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like edit"));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the ClassRoom name in which you would like edit"));
                 WriteLineClassRoomDictionary();
                 string classroomChoice = Console.ReadLine().ToUpper();
                 classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
@@ -106,7 +106,12 @@ namespace Grade_Manager_OO
 
             static void RemoveClassRoom()
             {
-                Console.WriteLine("Remove Classroom");
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the ClassRoom name in which you would like to remove."));
+                Console.SetCursorPosition(21, 9);
+                string classRoomName = Console.ReadLine().ToUpper();
+                classRoomsDictionary.Remove(classRoomName);
+                Menu();
             }
 
             static void Exit()

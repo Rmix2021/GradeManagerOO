@@ -10,7 +10,7 @@ namespace Grade_Manager_OO
     {
         public string StudentName { get; set; }    
         
-        public double Average { get; set; } = gradesListToAverageOut.Average();
+        public double Average { get; set; }
 
         public bool AllAssignmentsCompleteTrueOrFalse { get; set; } = false;
 
@@ -23,7 +23,7 @@ namespace Grade_Manager_OO
 
         public Student(string namedStudent)
         {
-            this.StudentName = namedStudent;
+            this.StudentName = namedStudent.ToUpper();
             this.Average = 0;
         }
 
@@ -111,11 +111,8 @@ namespace Grade_Manager_OO
         void ShowStudentSummary()
         {
             Console.Clear();
-            Console.WriteLine(this.StudentName);
-            Console.WriteLine(this.Average);
-            Console.WriteLine(this.AllAssignmentsCompleteTrueOrFalse);
-            Console.ReadLine().ToUpper();
-
+            WriteLineAssignmentDictionary();
+            Console.ReadLine();
             EditStudentDetailsMenu();
 
         }
@@ -138,7 +135,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             WriteLineAssignmentDictionary();
-            Console.ReadLine().ToUpper();
+            Console.ReadLine();
             EditStudentDetailsMenu();
         }
 
@@ -147,7 +144,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", HighestGrade));
-            Console.ReadLine().ToUpper();
+            Console.ReadLine();
             EditStudentDetailsMenu();
         }
 
@@ -156,7 +153,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", LowestGrade));
-            Console.ReadLine().ToUpper();
+            Console.ReadLine();
             EditStudentDetailsMenu();
         }
 
@@ -166,19 +163,32 @@ namespace Grade_Manager_OO
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Assignment name in which you would like Grade"));
             WriteLineAssignmentDictionary();
             string assignmentChoice = Console.ReadLine().ToUpper();
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                EditStudentDetailsMenu();
+            }
 
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter this assignments Grade from 0.0 - 100"));
             double assignmentCurrentGrade = Convert.ToDouble(Console.ReadLine());
             assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
+
             if(assignmentCurrentGrade > HighestGrade)
             {
                 this.HighestGrade = assignmentCurrentGrade;
                 gradesListToAverageOut.Add(assignmentCurrentGrade);
+                this.Average = gradesListToAverageOut.Average();
             }
             else if(assignmentCurrentGrade < LowestGrade)
             {
                 this.LowestGrade = assignmentCurrentGrade;
                 gradesListToAverageOut.Add(assignmentCurrentGrade);
+                this.Average = gradesListToAverageOut.Average();
+
             }
             EditStudentDetailsMenu();
         }
